@@ -34,6 +34,8 @@ public class WhiskyController {
         } else if (distillery!=null && age!= null){
             Distillery distilleryObj = distilleryRepository.findDistilleryByName(distillery);
             return new ResponseEntity<>(whiskyRepository.findWhiskyByAgeAndDistilleryId(age,distilleryObj.getId()), HttpStatus.OK);
+        } else if (region!=null){
+            return new ResponseEntity<>(whiskyRepository.findWhiskyByDistilleryRegion(region), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(whiskyRepository.findAll(), HttpStatus.OK);
         }
